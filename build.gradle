@@ -1,0 +1,57 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+apply plugin: 'java'
+apply plugin:'application'
+mainClassName = "Main"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+// Lightweight Java Game Library 3
+
+import org.gradle.internal.os.OperatingSystem
+
+if ( project.hasProperty("osversion") ) {
+    println("project.ext.osversion set to: ${osversion}")
+} else {
+    println("project.ext.osversion not set")
+    switch ( OperatingSystem.current() ) {
+        case OperatingSystem.WINDOWS:
+            project.ext.osversion = "windows"
+            break
+        case OperatingSystem.LINUX:
+            project.ext.osversion = "linux"
+            break
+        case OperatingSystem.MAC_OS:
+            project.ext.osversion = "macos"
+            break
+    }
+}
+
+project.ext.lwjglNatives = "natives-${osversion}"
+project.ext.lwjglVersion = "3.1.3"
+project.ext.jomlVersion = "1.9.9"
+dependencies {
+    compile "org.lwjgl:lwjgl:${lwjglVersion}"
+    compile "org.joml:joml:${jomlVersion}"
+    compile "org.lwjgl:lwjgl-glfw:${lwjglVersion}"
+    compile "org.lwjgl:lwjgl-jemalloc:${lwjglVersion}"
+    compile "org.lwjgl:lwjgl-openal:${lwjglVersion}"
+    compile "org.lwjgl:lwjgl-opengl:${lwjglVersion}"
+    compile "org.lwjgl:lwjgl-stb:${lwjglVersion}"
+    runtime "org.lwjgl:lwjgl:${lwjglVersion}:$lwjglNatives"
+    runtime "org.lwjgl:lwjgl-glfw:${lwjglVersion}:$lwjglNatives"
+    runtime "org.lwjgl:lwjgl-jemalloc:${lwjglVersion}:$lwjglNatives"
+    runtime "org.lwjgl:lwjgl-openal:${lwjglVersion}:$lwjglNatives"
+    runtime "org.lwjgl:lwjgl-opengl:${lwjglVersion}:$lwjglNatives"
+    runtime "org.lwjgl:lwjgl-stb:${lwjglVersion}:$lwjglNatives"
+
+}
