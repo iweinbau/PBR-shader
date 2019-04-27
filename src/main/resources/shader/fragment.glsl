@@ -1,4 +1,4 @@
-#version 430
+#version 410
 
 in vec2 pass_textureCoordinates;
 in vec3 pass_normalVector;
@@ -98,7 +98,7 @@ void main()
     vec3 specular     = numerator / max(denominator, 0.001);
 
     //result diffuse
-    vec3 diffuse = (kD * albedo / PI + specular) * costhetaL * radiance * 1f;
+    vec3 diffuse = (kD * albedo / PI + specular) * costhetaL * radiance * 1.0;
 
     //calculate the abmient color.
     vec3 ambient = vec3(0.03) * albedo;

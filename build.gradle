@@ -5,7 +5,10 @@ apply plugin: 'java'
 sourceCompatibility = 1.8
 apply plugin: 'java'
 apply plugin:'application'
-mainClassName = "Main"
+
+application {
+    mainClassName = 'Main'
+}
 
 repositories {
     mavenCentral()
@@ -39,6 +42,7 @@ if ( project.hasProperty("osversion") ) {
 project.ext.lwjglNatives = "natives-${osversion}"
 project.ext.lwjglVersion = "3.1.3"
 project.ext.jomlVersion = "1.9.9"
+
 dependencies {
     compile "org.lwjgl:lwjgl:${lwjglVersion}"
     compile "org.joml:joml:${jomlVersion}"

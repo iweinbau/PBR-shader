@@ -1,4 +1,4 @@
-#version 430
+#version 410
 
 in vec2 pass_textureCoordinates;
 in vec3 pass_normalVector;
@@ -47,7 +47,7 @@ float phong_diffuse()
 // product could be NdV or VdH depending on used technique
 vec3 fresnel_factor(in vec3 f0, in float product)
 {
-    return mix(f0, vec3(1.0), pow(1.01 - product, 5.0));
+    return mix(vec3(0), vec3(1.0), pow(1.01 - product, 5.0));
 }
 
 
@@ -168,7 +168,7 @@ void main()
     vec3 specular     = numerator / max(denominator, 0.001);
 
     //result color
-    vec3 Lo = (kD * albedo / PI + specular) * NdL * radiance * 1f;
+    vec3 Lo = (kD * albedo / PI + specular) * NdL * radiance * 1;
 
     vec3 ambient = vec3(0.03) * albedo;
     vec3 color = ambient + Lo;

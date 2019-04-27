@@ -1,4 +1,4 @@
-#version 430
+#version 410
 
 in vec2 pass_textureCoordinates;
 in vec3 pass_normalVector;
@@ -103,7 +103,7 @@ void main()
 
     // ambient lighting (note that the next IBL tutorial will replace
     // this ambient lighting with environment lighting).
-    vec3 ambient = vec3(0.03) * albedo * 1f;
+    vec3 ambient = vec3(0.03) * albedo * 1;
 
     vec3 color = ambient + Lo;
 
