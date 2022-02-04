@@ -68,7 +68,7 @@ public abstract class GameObject implements IGameObject {
 
     @Override
     public void setRotation(Rotation rotation) {
-
+        this.rotation = rotation;
     }
 
     @Override

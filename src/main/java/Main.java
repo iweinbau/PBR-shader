@@ -45,7 +45,7 @@ public class Main {
     renderer = new Renderer();
     MouseCursor.setMouseIsLocked(true);
     camera = new FPSCamera(new Position(0, 0, 5), new Rotation(0, 0, 0), 70, 0.01f, 1000f);
-    light = new PointLight(new Vector3f(150), new  Vector3f(0,  0, 10.0f));
+    light = new PointLight(new Vector3f(10), new  Vector3f(0,  0, 0f));
 
     //Material newMaterial = new Material();
     Material newMaterial = new Material(new Texture(Loader.loadTexture("rustediron2_basecolor.png")));
@@ -66,7 +66,7 @@ public class Main {
     while (!Display.isCloseRequest()) {
       Time.updateTime();
 
-      //entity.setPosition(new Position(entity.getPosition().getX()+0.1f,entity.getPosition().getY(),entity.getRotation().getZ()));
+      entity.setRotation(new Rotation(entity.getRotation().getX(),entity.getRotation().getY(),entity.getRotation().getZ()+0.5f));
       light.move();
       //render all gameObjects
       renderer.render(camera, light);

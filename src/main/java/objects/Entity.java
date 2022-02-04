@@ -47,7 +47,7 @@ public class Entity extends GameObject3D {
 
     @Override
     public void setRotation(Rotation rotation) {
-
+        super.setRotation(rotation);
     }
 
     @Override
